@@ -1,0 +1,116 @@
+$color-workspace: rgb(128, 128, 128);
+$color-workspace-active: rgb(106, 177, 255);
+
+@font-face {
+  font-family: 'FMS Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialicons/v50/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2) format('woff2');
+}
+
+.fms-icon {
+  font-family: 'FMS Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+#fms-overlay {
+  display: contents;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  & > * {
+    box-sizing: border-box;
+  }
+}
+
+[fms-key] {
+  cursor: default;
+  &:focus { outline: none;}
+  // box-shadow: inset 0 0 0px 2px transparentize(rgb(128, 128, 128), 0.75) !important;
+}
+
+.fms-workspace {
+  position: absolute;
+  z-index: 9999;
+  box-shadow: 0px 0px 0px 2px transparentize($color-workspace-active, 0.5);
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  // border-radius: 3px;
+  transition: box-shadow .3s linear;
+  &--active {
+    box-shadow: 0px 0px 0px 3px $color-workspace-active
+  }
+}
+
+.fms-control-bar {
+  position: fixed;
+  bottom: 0;
+  height: 48px;
+  background: grey;
+  width: 100%;
+  left: 0;
+}
+
+.fms-workspace-toolbar {
+  pointer-events: all;
+  position: absolute;
+  bottom: 0;
+  transform: translate(-2px, 50%);
+  right: 0;
+  font-size: 11px;
+  line-height: 1.4;
+  display: flex;
+  justify-content: flex-end;
+  padding: 2px;
+
+  & > *:not(:nth-last-child(1)) {
+    margin-right: 8px;
+  }
+
+  i.fms-icon {
+    font-size: 13px;
+  }
+}
+
+.fms-workspace-toolbar-button {
+  -webkit-appearance: none;
+  background: initial;
+  color: inherit;
+  border: initial;
+  padding: initial;
+  outline: initial;
+  font-size: inherit;
+  background: $color-workspace-active;
+  color: white;
+  padding: 4px 6px;
+  cursor: pointer;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  border-radius: 2px;  
+  & > *:not(:nth-last-child(1)) {
+    margin-right: 4px;
+  }
+  &:hover {
+    background: darken($color-workspace-active, 10%);
+  }
+}
